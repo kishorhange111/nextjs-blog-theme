@@ -1,5 +1,10 @@
 import Link from 'next/link';
 
+/**
+ * Top of every page: a gradient circle "logo" and the blog name linking home.
+ *
+ * @param {{ name: string }} props
+ */
 export default function Header({ name }) {
   return (
     <header className="pt-20 pb-12">

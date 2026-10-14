@@ -1,3 +1,11 @@
+/**
+ * Shared Tailwind CSS preset: theme colours, fonts, dark-mode typography and
+ * two small custom plugins. Loaded from tailwind.config.js.
+ *
+ * Colour theme and fonts are picked with environment variables at build time:
+ *   BLOG_THEME         one of the keys in themes.js (default "default")
+ *   BLOG_FONT_HEADINGS / BLOG_FONT_BODY  "sans-serif" | "serif" | "monospace"
+ */
 const plugin = require('tailwindcss/plugin');
 const pluginTypography = require('@tailwindcss/typography');
 const { COLOR_THEMES, FONT_THEMES } = require('../themes');
@@ -6,6 +14,9 @@ const THEME = process.env.BLOG_THEME || 'default';
 const FONT_PRIMARY = process.env.BLOG_FONT_HEADINGS || 'sans-serif';
 const FONT_SECONDARY = process.env.BLOG_FONT_BODY || 'sans-serif';
 
+// Adds a `hovered-sibling:` variant: styles apply to an element when the
+// element right before it is hovered. Used on the post list so the border
+// between two cards does not look doubled on hover.
 const hoveredSiblingPlugin = plugin(function ({ addVariant, e }) {
   addVariant('hovered-sibling', ({ container }) => {
     container.walkRules((rule) => {
@@ -14,6 +25,9 @@ const hoveredSiblingPlugin = plugin(function ({ addVariant, e }) {
   });
 });
 
+// Turns the chosen colour theme and fonts into CSS custom properties
+// (--color-primary, --font-primary, ...) on the `.theme-compiled` class, which
+// _document.js puts on <html>. Tailwind colours below refer to these variables.
 const themesConfig = plugin(function ({ addComponents }) {
   const cssVars = {};
 

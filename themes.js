@@ -1,3 +1,8 @@
+/**
+ * Colour and font presets. Pick one at build time with the BLOG_THEME,
+ * BLOG_FONT_HEADINGS and BLOG_FONT_BODY environment variables
+ * (see utils/tailwind-preset.js).
+ */
 exports.COLOR_THEMES = {
   default: {
     colors: {

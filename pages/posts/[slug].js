@@ -28,6 +28,12 @@ const components = {
   Head,
 };
 
+/**
+ * A single blog post page, with links to the previous and next posts.
+ *
+ * The file name `[slug].js` makes this a dynamic route: /posts/hello-world
+ * renders this component with the "hello-world" post.
+ */
 export default function PostPage({
   source,
   frontMatter,
@@ -98,6 +104,10 @@ export default function PostPage({
   );
 }
 
+/**
+ * Runs at build time for each slug returned by getStaticPaths: loads and
+ * compiles the post plus its neighbours for the prev/next links.
+ */
 export const getStaticProps = async ({ params }) => {
   const globalData = getGlobalData();
   const { mdxSource, data } = await getPostBySlug(params.slug);
@@ -115,6 +125,10 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
+/**
+ * Tells Next.js which post pages to pre-render: one per file in posts/.
+ * `fallback: false` means any other /posts/... URL returns 404.
+ */
 export const getStaticPaths = async () => {
   const paths = postFilePaths
     // Remove file extensions for page paths

@@ -8,6 +8,11 @@ import ArrowIcon from '../components/ArrowIcon';
 import { getGlobalData } from '../utils/global-data';
 import SEO from '../components/SEO';
 
+/**
+ * Home page: blog title and a list of every post, newest first.
+ *
+ * @param {{ posts: Array, globalData: object }} props - From getStaticProps below.
+ */
 export default function Index({ posts, globalData }) {
   return (
     <Layout>
@@ -23,6 +28,7 @@ export default function Index({ posts, globalData }) {
               key={post.filePath}
               className="md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 transition border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 border-b-0 last:border-b hover:border-b hovered-sibling:border-t-0"
             >
+              {/* `href` is the route pattern, `as` is the real URL shown in the browser. */}
               <Link
                 as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
                 href={`/posts/[slug]`}
@@ -59,6 +65,10 @@ export default function Index({ posts, globalData }) {
   );
 }
 
+/**
+ * Runs at build time: reads all posts so the home page can be generated as
+ * static HTML (no server or database needed when the site is live).
+ */
 export function getStaticProps() {
   const posts = getPosts();
   const globalData = getGlobalData();
