@@ -1,3 +1,9 @@
+/**
+ * Right-pointing arrow icon. `stroke-current` makes the line use the text
+ * colour, so the `color` prop (a Tailwind class) sets the arrow colour.
+ *
+ * @param {{ className?: string, color?: string }} props
+ */
 export default function ArrowIcon({ className, color = 'text-primary' }) {
   return (
     <svg

@@ -1,3 +1,4 @@
+// Inline SVG icons for the theme switcher buttons.
 const sunIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +48,12 @@ const moonIcon = (
   </svg>
 );
 
+/**
+ * Two buttons that switch between dark and light mode.
+ *
+ * Dark mode is the `dark` class on <html> (Tailwind's `darkMode: 'class'`).
+ * The choice is saved in localStorage so Layout can restore it on the next visit.
+ */
 const ThemeSwitcher = () => {
   return (
     <div className="flex mt-6 bg-white justify-center dark:bg-gray-900 rounded-3xl p-1">
@@ -77,6 +84,11 @@ const ThemeSwitcher = () => {
   );
 };
 
+/**
+ * Page footer with the copyright text and the theme switcher.
+ *
+ * @param {{ copyrightText: string }} props
+ */
 export default function Footer({ copyrightText }) {
   return (
     <footer className="py-16 flex flex-col items-center">

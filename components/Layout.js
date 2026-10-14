@@ -2,6 +2,13 @@ import classNames from 'classnames';
 import { useEffect } from 'react';
 import styles from './Layout.module.css';
 
+/**
+ * Decorative blurred gradient behind the content.
+ *
+ * @param {{ variant: 'large' | 'small', className?: string }} props
+ *   `variant` picks the CSS module style; classNames() joins only the classes
+ *   whose condition is true, plus any extra `className`.
+ */
 export function GradientBackground({ variant, className }) {
   const classes = classNames(
     {
@@ -14,7 +21,13 @@ export function GradientBackground({ variant, className }) {
   return <div className={classes} />;
 }
 
+/**
+ * Page wrapper: centres the content and keeps dark/light mode in sync.
+ *
+ * @param {{ children: React.ReactNode }} props
+ */
 export default function Layout({ children }) {
+  // Apply the theme the visitor picked last time (saved by the Footer buttons).
   const setAppTheme = () => {
     const darkMode = localStorage.getItem('theme') === 'dark';
     const lightMode = localStorage.getItem('theme') === 'light';
@@ -27,6 +40,7 @@ export default function Layout({ children }) {
     return;
   };
 
+  // Follow the operating system's dark-mode setting when it changes.
   const handleSystemThemeChange = () => {
     var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -41,6 +55,8 @@ export default function Layout({ children }) {
     };
   };
 
+  // useEffect with [] runs once after the first render in the browser;
+  // localStorage and window do not exist during the server-side build.
   useEffect(() => {
     setAppTheme();
   }, []);

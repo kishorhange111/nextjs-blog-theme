@@ -1,6 +1,11 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
+/**
+ * Custom Document: controls the outer <html> and <body> markup, which is
+ * rendered on the server only. `theme-compiled` attaches the theme's CSS
+ * variables (see utils/tailwind-preset.js) to the whole page.
+ */
 class MyDocument extends Document {
   render() {
     return (
