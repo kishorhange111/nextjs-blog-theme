@@ -7,7 +7,7 @@ describe('sample render test', () => {
   });
 
   it('displays the title text', () => {
-    // Default BLOG_TITLE from utils/global-data.js.
+    // Default BLOG_TITLE from src/utils/global-data.js.
     cy.get('h1').contains('Notes on ML & Software Engineering');
   });
 });
