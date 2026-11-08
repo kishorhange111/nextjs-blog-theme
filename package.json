@@ -27,7 +27,7 @@
     "gray-matter": "^4.0.2",
     "next": "^15.5.29",
     "next-mdx-remote": "^6.0.0",
-    "next-remote-watch": "1.0.0",
+    "next-remote-watch": "2.0.0",
     "prismjs": "^1.30.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
