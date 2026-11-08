@@ -22,7 +22,7 @@ jobs:
       # and builds, so skip downloading its ~500 MB binary.
       CYPRESS_INSTALL_BINARY: 0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
