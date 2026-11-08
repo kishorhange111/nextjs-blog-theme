@@ -9,7 +9,7 @@ A statically generated personal blog built on the open-source [Netlify Next.js b
 ## Features
 - Static site generation with Next.js: one page per post via `getStaticPaths` / `getStaticProps`
 - Posts in MDX with front-matter (title, description, date) parsed by `gray-matter`
-- Code highlighting with Prism (`@mapbox/rehype-prism`) and GitHub-flavoured Markdown (`remark-gfm`)
+- Code highlighting with Prism (`rehype-prism-plus`) and GitHub-flavoured Markdown (`remark-gfm`)
 - Dark / light themes and colour presets via Tailwind (`src/themes.js`, `src/utils/tailwind-preset.js`)
 - Blog name, title and footer configurable through environment variables
 - End-to-end smoke test with Cypress; Netlify deployment config (`netlify.toml`)
